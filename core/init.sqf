@@ -9,4 +9,4 @@ waitUntil {!(isNull (findDisplay 46))};
 diag_log "Display 46 Found";
 (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call life_fnc_keyHandler"];
 
-[] call JDEV_fnc_setupEVH;
+[] call DDEV_fnc_setupEVH;

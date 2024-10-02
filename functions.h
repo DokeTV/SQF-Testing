@@ -1,5 +1,5 @@
 class Client_Core {
-	tag = "JDEV";
+	tag = "DDEV";
 
 	class randomClass1 {
 		file = "core";

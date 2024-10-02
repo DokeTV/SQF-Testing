@@ -1,0 +1,58 @@
+author="Olympus Entertainment Dev Team";
+onLoadName = "Olympus Junior Dev Mission";
+onLoadMission = "Test Mission for Olympus Junior Developers.";
+overviewText = "Test Mission for Olympus Junior Developers.";
+overviewTextLocked = "Test Mission for Olympus Junior Developers.";
+overviewPicture = "";
+loadScreen = "";
+OnLoadIntroTime = 0;
+OnLoadMissionTime = 0;
+allowFunctionsLog = 1;
+allowFunctionsRecompile = 0;
+briefing = 0;
+
+joinUnassigned = 1;
+respawn = BASE;
+disabledAI = 1;
+disableChannels[]={0,1,2};
+enableDebugConsole = 1;
+respawnDialog = 0;
+scriptedPlayer = 1;
+forceRotorLibSimulation = 2;
+
+class Header {
+	gameType = RPG;
+	minPlayers = 1;
+	maxPlayers = 100;
+};
+
+respawndelay = 10;
+wreckLimit = 3;
+wreckRemovalMinTime = 60;
+wreckRemovalMaxTime = 320;
+corpseLimit = 75;
+corpseRemovalMinTime = 600;
+corpseRemovalMaxTime = 1200;
+
+reviveMode = 1;                         //0: disabled, 1: enabled, 2: controlled by player attributes
+reviveUnconsciousStateMode = 0;         //0: basic, 1: advanced, 2: realistic
+reviveRequiredTrait = 0;                //0: none, 1: medic trait is required
+reviveRequiredItems = 2;                //0: none, 1: medkit, 2: medkit or first aid kit
+reviveRequiredItemsFakConsumed = 1;     //0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+reviveDelay = 6;                        //time needed to revive someone (in secs)
+reviveMedicSpeedMultiplier = 2;         //speed multiplier for revive performed by medic
+reviveForceRespawnDelay = 3;            //time needed to perform force respawn (in secs)
+reviveBleedOutDelay = 120;              //unconscious state duration (in secs)
+
+showHUD[] = {1,1,0,1,0,0,1,1,1};
+
+class RscTitles {
+};
+
+class CfgFunctions {
+	#include "Functions.h"
+};
+
+class CfgRemoteExec {
+	#include "CfgRE.hpp"
+};

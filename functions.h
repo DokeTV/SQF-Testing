@@ -5,4 +5,14 @@ class Client_Core {
 		file = "core";
 		class setupEVH {};
 	};
+		class randomClass2 {
+		file = "pharma";
+		class pharmaLearning {};
+	};
+	class randomClass3 {
+		file = "blackwater";
+		class bwLearning {};
+		class bwSphereActions {};
+	};
 };
+

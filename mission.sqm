@@ -8,7 +8,7 @@ class EditorData
 	toggles=521;
 	class ItemIDProvider
 	{
-		nextID=81;
+		nextID=104;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15307.447,36.076397,16112.779};
-		dir[]={0.47907472,-0.76881105,-0.42357647};
-		up[]={0.57596827,0.639476,-0.50924546};
-		aside[]={-0.66238052,-1.4901161e-08,-0.74916756};
+		pos[]={15408.398,17.508793,16109.253};
+		dir[]={-0.96003276,-0.23356435,-0.1543325};
+		up[]={-0.23063469,0.97233713,-0.037077244};
+		aside[]={-0.15872167,-2.7078204e-07,0.98734319};
 	};
 };
 binarizationWanted=0;
@@ -44,13 +44,19 @@ addons[]=
 	"A3_Characters_F_Mark",
 	"A3_Misc_F_Helpers",
 	"A3_Structures_F_Heli_VR_Helpers",
-	"A3_Characters_F_AoW"
+	"A3_Characters_F_AoW",
+	"A3_Weapons_F_Exp_Launchers_RPG7",
+	"A3_Weapons_F_Exp",
+	"A3_Weapons_F_Pistols_P07",
+	"A3_Characters_F_Heads",
+	"A3_Weapons_F_Enoch",
+	"A3_Weapons_F_Mark"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=14;
+		items=16;
 		class Item0
 		{
 			className="A3_Characters_F_Exp";
@@ -149,6 +155,20 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item14
+		{
+			className="A3_Weapons_F_Exp";
+			name="Arma 3 Apex - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item15
+		{
+			className="A3_Weapons_F_Enoch";
+			name="Arma 3 Contact Platform - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -238,7 +258,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=20;
+		items=39;
 		class Item0
 		{
 			dataType="Group";
@@ -476,7 +496,6 @@ class Mission
 					class Attributes
 					{
 						name="cop_1";
-						isPlayer=1;
 						isPlayable=1;
 					};
 					id=9;
@@ -1016,19 +1035,35 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15316.762,4.2879882,16097.998};
+						position[]={15317.668,4.2862816,16098.238};
+						angles[]={0,1.6542231,0};
 					};
 					side="Civilian";
 					flags=7;
 					class Attributes
 					{
-						init="this call DDEV_fnc_pharmaLearning;";
+						init="pharmaStartNpc = this;" \n "this call DDEV_fnc_pharmaLearning;" \n "";
+						disableSimulation=1;
+						ignoreByDynSimulGrid=1;
 					};
 					id=78;
 					type="C_Man_smart_casual_1_F";
 					class CustomAttributes
 					{
 						class Attribute0
+						{
+							property="allowDamage";
+							expression="_this allowdamage _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="BOOL";
+									value=0;
+								};
+							};
+						};
+						class Attribute1
 						{
 							property="speaker";
 							expression="_this setspeaker _value;";
@@ -1041,7 +1076,7 @@ class Mission
 								};
 							};
 						};
-						class Attribute1
+						class Attribute2
 						{
 							property="pitch";
 							expression="_this setpitch _value;";
@@ -1054,7 +1089,20 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						class Attribute3
+						{
+							property="enableStamina";
+							expression="_this enablestamina _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="BOOL";
+									value=0;
+								};
+							};
+						};
+						nAttributes=4;
 					};
 				};
 			};
@@ -1075,23 +1123,592 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15317.699,4.2697096,16096.183};
+						position[]={15317.7,4.2697034,16096.183};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
+						isPlayer=1;
+						class Inventory
+						{
+							class primaryWeapon
+							{
+								name="srifle_DMR_03_woodland_F";
+								optics="optic_Aco";
+								flashlight="acc_pointer_IR";
+								class primaryMuzzleMag
+								{
+									name="20Rnd_762x51_Mag";
+									ammoLeft=20;
+								};
+							};
+							class secondaryWeapon
+							{
+								name="launch_RPG7_F";
+								class primaryMuzzleMag
+								{
+									name="RPG7_F";
+									ammoLeft=1;
+								};
+							};
+							class handgun
+							{
+								name="hgun_P07_F";
+								class primaryMuzzleMag
+								{
+									name="16Rnd_9x21_Mag";
+									ammoLeft=16;
+								};
+							};
+							class binocular
+							{
+								name="Rangefinder";
+							};
+							class uniform
+							{
+								typeName="U_B_CombatUniform_mcam_tshirt";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=2;
+									class Item0
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item1
+									{
+										name="20Rnd_762x51_Mag";
+										count=2;
+										ammoLeft=20;
+									};
+								};
+								class ItemCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="FirstAidKit";
+										count=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="V_Chestrig_rgr";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=7;
+									class Item0
+									{
+										name="16Rnd_9x21_Mag";
+										count=2;
+										ammoLeft=16;
+									};
+									class Item1
+									{
+										name="HandGrenade";
+										count=2;
+										ammoLeft=1;
+									};
+									class Item2
+									{
+										name="B_IR_Grenade";
+										count=2;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="SmokeShell";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item4
+									{
+										name="SmokeShellGreen";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item5
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item6
+									{
+										name="20Rnd_762x51_Mag";
+										count=1;
+										ammoLeft=20;
+									};
+								};
+							};
+							class backpack
+							{
+								typeName="B_Bergen_dgtl_F";
+								isBackpack=1;
+								class MagazineCargo
+								{
+									items=2;
+									class Item0
+									{
+										name="Titan_AA";
+										count=3;
+										ammoLeft=1;
+									};
+									class Item1
+									{
+										name="RPG7_F";
+										count=4;
+										ammoLeft=1;
+									};
+								};
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							radio="ItemRadio";
+							goggles="G_Tactical_Clear";
+							hmd="NVGoggles";
+							headgear="H_HelmetB_light";
+						};
 					};
 					id=80;
 					type="B_soldier_AAA_F";
-					atlOffset=2.3841858e-06;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male09ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
 			{
 			};
 			id=79;
-			atlOffset=2.3841858e-06;
+		};
+		class Item20
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15402.024,4.1573825,16102.065};
+						angles[]={0,4.929944,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="pharmaEndNpc = this;" \n "this call DDEV_fnc_testing;" \n "";
+						disableSimulation=1;
+						ignoreByDynSimulGrid=1;
+					};
+					id=82;
+					type="C_man_p_beggar_F";
+					atlOffset=1.0967255e-05;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="allowDamage";
+							expression="_this allowdamage _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="BOOL";
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male05GRE";
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1;
+								};
+							};
+						};
+						class Attribute3
+						{
+							property="enableStamina";
+							expression="_this enablestamina _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="BOOL";
+									value=0;
+								};
+							};
+						};
+						nAttributes=4;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=81;
+			atlOffset=1.0967255e-05;
+		};
+		class Item21
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15321.249,5.6705022,16082.044};
+				angles[]={6.2805333,5.9889879,6.2711854};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=83;
+			type="C_Hatchback_01_F";
+			atlOffset=-0.00019216537;
+		};
+		class Item22
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15321.43,4.2411051,16093.809};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=86;
+			type="Weapon_arifle_AK12_F";
+			atlOffset=1.9073486e-06;
+		};
+		class Item23
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15321.531,4.2390242,16093.182};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=88;
+			type="Weapon_arifle_AK12_arid_f";
+			atlOffset=1.9073486e-06;
+		};
+		class Item24
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15321.557,4.2415228,16094.156};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=89;
+			type="Weapon_arifle_CTAR_GL_blk_F";
+			atlOffset=-2.8610229e-06;
+		};
+		class Item25
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15316.965,4.260951,16094.555};
+				angles[]={6.2805333,3.0653145,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=90;
+			type="Weapon_srifle_DMR_03_F";
+		};
+		class Item26
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15317.09,4.258728,16093.909};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=91;
+			type="Weapon_srifle_EBR_F";
+			atlOffset=-2.3841858e-06;
+		};
+		class Item27
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15317.068,4.2571859,16093.299};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=92;
+			type="Weapon_srifle_DMR_06_hunter_F";
+			atlOffset=-1.4305115e-06;
+		};
+		class Item28
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15316.858,4.2625165,16094.98};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=93;
+			type="Weapon_srifle_DMR_03_multicam_F";
+			atlOffset=2.8610229e-06;
+		};
+		class Item29
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15316.984,4.2655845,16095.439};
+				angles[]={6.2751846,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=94;
+			type="Weapon_srifle_DMR_03_khaki_F";
+			atlOffset=8.1062317e-06;
+		};
+		class Item30
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15316.903,4.269496,16095.89};
+				angles[]={6.2751846,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=95;
+			type="Weapon_srifle_DMR_03_tan_F";
+			atlOffset=-5.7220459e-06;
+		};
+		class Item31
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15318.025,4.2568235,16094.597};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=96;
+			type="Weapon_srifle_DMR_03_woodland_F";
+			atlOffset=1.4305115e-06;
+		};
+		class Item32
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15317.372,4.2548294,16092.869};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=97;
+			type="Weapon_srifle_DMR_06_camo_F";
+			atlOffset=4.7683716e-07;
+		};
+		class Item33
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15317.355,4.2566032,16092.216};
+				angles[]={0.0053265258,0,6.2711854};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=98;
+			type="Weapon_srifle_DMR_06_olive_F";
+			atlOffset=3.8146973e-05;
+		};
+		class Item34
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15318.836,4.2475815,16092.35};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=99;
+			type="Weapon_arifle_ARX_hex_F";
+			atlOffset=-5.2452087e-06;
+		};
+		class Item35
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15318.829,4.2486715,16092.747};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=100;
+			type="Weapon_arifle_ARX_ghex_F";
+			atlOffset=-3.8146973e-06;
+		};
+		class Item36
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15318.822,4.2496099,16093.086};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=101;
+			type="Weapon_arifle_ARX_blk_F";
+			atlOffset=5.7220459e-06;
+		};
+		class Item37
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15318.872,4.2505445,16093.514};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=102;
+			type="Weapon_arifle_MSBS65_F";
+			atlOffset=-4.2915344e-06;
+		};
+		class Item38
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15318.895,4.2514672,16093.892};
+				angles[]={6.2805333,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=103;
+			type="Weapon_arifle_MSBS65_GL_black_F";
+			atlOffset=3.8146973e-06;
 		};
 	};
 };

@@ -8,6 +8,7 @@ class Client_Core {
 		class randomClass2 {
 		file = "pharma";
 		class pharmaLearning {};
+		class testing {};
 	};
 	class randomClass3 {
 		file = "blackwater";

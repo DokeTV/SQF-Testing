@@ -10,3 +10,5 @@ diag_log "Display 46 Found";
 (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call life_fnc_keyHandler"];
 
 [] call DDEV_fnc_setupEVH;
+lastActivationTime = 0;
+pharmaPhase = -1; 

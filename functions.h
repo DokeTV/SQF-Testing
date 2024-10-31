@@ -5,4 +5,10 @@ class Client_Core {
 		file = "core";
 		class setupEVH {};
 	};
+	class newClass {
+	file = "blackwater"; 
+	class blackWater {};
+	};
 };
+
+
